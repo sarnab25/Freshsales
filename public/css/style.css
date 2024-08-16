@@ -13,3 +13,10 @@
 {
     margin: 1rem;
 }
+
+#IVR
+{
+    position: fixed;
+    top: 4rem;
+    right: 0rem;
+}

@@ -193,4 +193,17 @@ async function createCall() {
     console.log(call.sid);
   }
   
-  createCall();
+  app.post("/startcall", async(req, res)=>
+{
+    try{
+      await  createCall();
+      res.send("Call Initiated successfully")
+    }
+
+    catch(error)
+    {
+        console.error("Error initiating call", error)
+        res.status(500).send("Error initiating call")
+    }
+   
+})
