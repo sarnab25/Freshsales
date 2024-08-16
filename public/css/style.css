@@ -1,0 +1,15 @@
+.create-container{
+    position: fixed;
+    right: 0rem;
+    top: 0rem;
+}
+
+.card
+{
+    margin-bottom: 5rem;
+}
+
+.btn 
+{
+    margin: 1rem;
+}

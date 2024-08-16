@@ -1,0 +1,27 @@
+<% layout("/layout/boilerplate.ejs") %>
+<body>
+    
+    
+
+            <div class="card">
+                <div class="card-header">
+                  Freshsales Contact
+                </div>
+                <div class="card-body">
+                  <p>First name :<%= contact.fisrt_name %></p>
+                  <p>Last Name: <%= contact.last_name %></p>
+                  <p>Email :<%= contact.email %></p>
+                  <p>Mobile: :<%= contact.mobile_Number %></p>
+                 
+                  
+                    <a href="/update/<%= contact._id %>" class="btn btn-outline-primary">Edit</a>
+                  
+                </div>
+              </div>
+
+           
+
+      
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<% layout("/layout/boilerplate.ejs") %>
+<body>
+<form action="/createContact" method="post">
+    <div class="mb-3">
+        <label for="Firstname" class="form-label" >First Name</label>
+        <input type="text" class="form-control" id="Firstname" placeholder="Enter your first name" name="first">
+      </div>
+      <div class="mb-3">
+        <label for="Lastname" class="form-label" >Last Name</label>
+        <input type="text" class="form-control" id="Lastname" placeholder="Enter your Last name" name="last">
+      </div>
+
+    <div class="mb-3">
+        <label for="Email" class="form-label" >Email address</label>
+        <input type="email" class="form-control" id="Email" placeholder="name@example.com" name="email">
+      </div>
+      <div class="mb-3">
+        <label for="Mobile" class="form-label">Mobile Number</label>
+        <input type="number" class="form-control" id="Mobile" placeholder="Enter your mobile number"  name="mobile">
+      </div>
+
+      <div class="create-container2"><button class="btn btn-primary" type="submit">Create</button></div>
+    </form>
+</body>
+</html>
