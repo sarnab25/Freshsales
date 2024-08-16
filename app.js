@@ -167,9 +167,9 @@ app.post("/handlekey", (req,res)=>
         client.messages
     .create({
         body: 'Here is your interview Link - https://v.personaliz.ai/?id=9b697c1a&uid=fe141702f66c760d85ab&mode=test',
-        from: '+12563048722',
+        from:  process.env.TWILIO_PHONE_NUMBER,
 
-              to: '+919783318790'
+              to: process.env.PHONE_NUMBER
     })
     .then(message => console.log(message.sid)).catch(error=>console.error("Error sending message", error));
     }
