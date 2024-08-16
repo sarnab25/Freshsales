@@ -6,6 +6,7 @@ const Contact = require("./modules/contact.js")
 const ejsMate= require("ejs-mate");
 const methodOverride=require("method-override");
 const twilio = require("twilio");
+const { error } = require("console");
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
 const app=express()
 dotenv.config()
@@ -141,9 +142,55 @@ app.post("/createContact", async(req,res)=>
     const response = new VoiceResponse();
     response.play('https://ect82q.bn.files.1drv.com/y4mGYURLog88TliAQzjx2o-VVvuPFqH5VpPhp94ha_9lvoKiack4PwOHLaSyluMnLwBHoOZSM2sD1BrnHGtqB1vxc3z6F9C1DgE8FCh7OFnF9Kin2GY60PYca53fTrOkDd7l-An-AJHhUHzrckxYwL47_rmJajno_iZeCWeNWjLo2mzqT1qh11EtXoHHjouyVSvjJLhJvdahEfKn0kNE_pbbA');
     
+response.gather({
+    numDigits:1,
+    action:"/handlekey",
+    method:'POST',
+    timeout:10
+})
+
     console.log(response.toString());
-    res.type("text/xml")
+    // res.type("text/xml")
     res.send(response.toString())
+
 
 })
 
+app.post("/handlekey", (req,res)=>
+{
+    const response = new VoiceResponse()
+    const digit= req.body.Digits
+
+    if(digit=== '1')
+    {
+        response.say("Thank you for pressing 1.Please check your SMS for interview link ")
+        client.messages
+    .create({
+        body: 'Here is your interview Link - https://v.personaliz.ai/?id=9b697c1a&uid=fe141702f66c760d85ab&mode=test',
+        from: '+12563048722',
+
+              to: '+919783318790'
+    })
+    .then(message => console.log(message.sid)).catch(error=>console.error("Error sending message", error));
+    }
+
+    else 
+    {
+        response.say("Thank your for your time")
+    }
+
+    res.type("text/xml")
+    res.send(response.toString())
+})
+
+async function createCall() {
+    const call = await client.calls.create({
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: process.env.PHONE_NUMBER,
+      url: "https://freshsales-contacts.onrender.com/ivr",
+    });
+  
+    console.log(call.sid);
+  }
+  
+  createCall();
